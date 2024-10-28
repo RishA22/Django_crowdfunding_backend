@@ -1,14 +1,15 @@
 from django.db import models
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model #to import Django's get_user_model function, which allows you to access the current user model in your project, In Django, you can replace the default User model with a custom one (for example, CustomUser). If you do this, get_user_model() is a safe way to reference the user model because it dynamically retrieves the model you specified in AUTH_USER_MODEL in settings.py. This makes your code flexible and avoids hardcoding the user model name.
 
 # Create your models here.
 class Project(models.Model):
-  title = models.CharField(max_length=200) # A short text field for the project title
+  project_name = models.CharField(max_length=200) # A short text field for the project title
   description = models.TextField() # A longer text field for the project description
   goal = models.IntegerField() # An integer field to store a project goal, e.g., a funding goal
   image = models.URLField() # A URL field to store the link to an image
   is_open = models.BooleanField() # A boolean field to check if the project is open or closed
-  date_created = models.DateTimeField(auto_now_add=True) # Stores the date and time when the project was created
+  create_date = models.DateTimeField(auto_now_add=True) # Stores the date and time when the project was created
+  end_date = models.DateTimeField()
   owner = models.ForeignKey(
        get_user_model(),
        on_delete=models.CASCADE,

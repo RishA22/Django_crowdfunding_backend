@@ -2,8 +2,8 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.views import ObtainAuthToken #imports the ObtainAuthToken class from Django REST Framework's authtoken module
+from rest_framework.authtoken.models import Token # imports the Token model from Django REST Framework's authtoken module.
 from .models import CustomUser
 from .serializers import CustomUserSerializer
 class CustomUserList(APIView):
@@ -34,7 +34,7 @@ class CustomUserDetail(APIView):
       serializer = CustomUserSerializer(user)
       return Response(serializer.data)
   
-class CustomAuthToken(ObtainAuthToken):
+class CustomAuthToken(ObtainAuthToken): #This code defines a custom authentication view, CustomAuthToken, which extends the ObtainAuthToken class in Django REST Framework. This custom view provides additional information in the login response, such as the user’s ID and email, alongside the authentication token.
   def post(self, request, *args, **kwargs):
       serializer = self.serializer_class(
           data=request.data,

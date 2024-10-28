@@ -49,7 +49,7 @@ INSTALLED_APPS = [ #register apps
     'projects.apps.ProjectsConfig',
     'users.apps.UsersConfig',
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_framework.authtoken', # module in Django REST Framework (DRF) that provides token-based authentication
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -59,8 +59,9 @@ INSTALLED_APPS = [ #register apps
     'django.contrib.staticfiles',
 ]
 
+#TokenAuthentication: This is an authentication class provided by DRF to support token-based authentication.With this setting, your API will expect an Authorization header with the format Token <token> in each request.The server will look for the token in the database to verify the user's identity.If a valid token is not provided, the server will respond with a 401 Unauthorized error.
 REST_FRAMEWORK = {
-  'DEFAULT_AUTHENTICATION_CLASSES': [
+  'DEFAULT_AUTHENTICATION_CLASSES': [ #This setting defines the authentication methods that will be used across your API by default.
       'rest_framework.authentication.TokenAuthentication',
   ]
 }
