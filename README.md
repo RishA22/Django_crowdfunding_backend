@@ -22,14 +22,18 @@ Anyone who supports the particular innovative idea will become a shareholder of 
 
 ### API Spec
 
-| URL | HTTP Method | Purpose | Request Body | Success Response Code | Authentication/Authorisation |
-| --- | ------- | ------- | ------------ | --------------------- | ---------------------------- |
-| /projects |    GET         | Returns all projects        |      N/A   |     200         |  N/A                     |  /projects/ |   POST                        | Create a new project | Project object | 201 | Must be logged in | /projects1/| GET | Returns the project with ID of "1" | N/A | 200 | N/A | 200 | N/A | /project1/ | PUT | Updates the project with ID of "1" | Project object | 200 | Must be logged in, Must be the project owner | /pledges/ | POST | Create a new pledge | Pledge object | 201 | Must be logged in, Must not be the owner of the project | pledges/1/ | GET | Get the pledge with ID of "1" | N/A | 200 | N/A | pledges/1/ | DELETE | Deletes the pledge with ID of "1" | N/A | 200 | Must be logged in, Must be the pledge owner.|
+| URL         | HTTP Method | Purpose                            | Request Body   | Success Response Code | Authentication/Authorisation                            |
+| :---------- | :---------- | :--------------------------------- | :------------- | :-------------------- | :------------------------------------------------------ |
+| /projects   | GET         | Returns all projects               | N/A            | 200                   | N/A                                                     |
+| /projects/  | POST        | Create a new project               | Project object | 201                   | Must be logged in                                       |
+| /projects1/ | GET         | Returns the project with ID of "1" | N/A            | 200                   | N/A                                                     | 200 | N/A |
+| /project1/  | PUT         | Updates the project with ID of "1" | Project object | 200                   | Must be logged in, Must be the project owner            |
+| /pledges/   | POST        | Create a new pledge                | Pledge object  | 201                   | Must be logged in, Must not be the owner of the project |
+| pledges/1/  | GET         | Get the pledge with ID of "1"      | N/A            | 200                   | N/A                                                     |
+| pledges/1/  | DELETE      | Deletes the pledge with ID of "1"  | N/A            | 200                   | Must be logged in, Must be the pledge owner.            |
 
 ### DB Schema
-![]( {{ ./relative/path/to/your/schema/image.png }} )
-
-An example API spec:  
+ERD Diagram:  
 ![](./assets/erd_crowdfunding.png)
 
 - A link to the deployed project:
@@ -37,16 +41,19 @@ An example API spec:
  https://django-crowdfunding-88b0c3d135e2.herokuapp.com/
 
 - GET method:
-- ![] A screenshot of Insomnia, demonstrating a successful GET method for any endpoint.
+ ![](./assets/get_projects.png)
+ ![](./assets/get_pledges.png)
 
 -POST method:
-
-- [ ] A screenshot of Insomnia, demonstrating a successful POST method for any endpoint.
+![](./assets/create_project.png)
+![](./assets/create_pledge.png)
 
 - Token being returned:
-
-- [ ] A screenshot of Insomnia, demonstrating a token being returned. ((hit auth endpoint))
+![](./assets/2_post_req_to_get_token_user1.png)
 
 - Register a new user:
+![](./assets/1_register_user1.png)
+![](./assets/2_post_req_to_get_token_user1.png)
+![](./assets/3_use_token_user1.png)
+![](./assets/4_create_project_user1.png)
 
-- [ ] Step by step instructions for how to register a new user and create a new project (i.e. endpoints and body data).
